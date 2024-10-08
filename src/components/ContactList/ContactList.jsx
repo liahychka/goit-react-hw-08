@@ -12,16 +12,16 @@ const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const searchStr = useSelector(selectFilters);
 
-  //   const filteredContacts = contacts.filter((contact) =>
-  //   contact.name.toLowerCase().includes(searchStr.toLowerCase())
-  // );
-  // if (filteredContacts.length === 0) {
-  //   return;
-  // }
+    const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(searchStr.toLowerCase())
+  );
+  if (filteredContacts.length === 0) {
+    return;
+  }
 
   return (
     <ul className={css.list}>
-      {contacts.map(({ id, name, number }) => {
+      {filteredContacts.map(({ id, name, number }) => {
         return (
           <Contact
             key={id}
