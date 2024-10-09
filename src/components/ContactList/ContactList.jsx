@@ -2,7 +2,7 @@ import Contact from "../Contact/Contact";
 import React from 'react';
 import css from "./ContactList.module.css"
 import {useDispatch, useSelector } from "react-redux";
-import { deleteContact, selectContacts } from "../../redux/contactsSlice";
+import { selectContacts } from "../../redux/contactsSlice";
 import { selectFilters } from "../../redux/filtersSlice";
 
 
@@ -28,9 +28,6 @@ const ContactList = () => {
             id={id}
             name={name}
             number={number}
-              deleteContacts={(contactId) => {
-              dispatch(deleteContact(contactId));
-            }}
           />
         );
       })}
