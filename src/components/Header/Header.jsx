@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors'
 import ContactList from '../ContactList/ContactList'
 import { logout } from '../../redux/auth/operations'
+import ContactsPage from '../../pages/ContactsPage'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Header = () => {
       <NavLink to='/login'>
         Log in
         </NavLink>
-        {/* <ContactList/> */}
+       <ContactsPage/>
       </>
       )}
 

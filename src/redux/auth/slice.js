@@ -32,7 +32,3 @@ const slice = createSlice({
 })
 
 export const authSlice = slice.reducer; 
-
-
-            // state.isLoggedIn = false;
-            // state.isRefreshing = false;
