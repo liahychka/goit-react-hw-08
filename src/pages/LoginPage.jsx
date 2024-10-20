@@ -1,13 +1,15 @@
 import { Field, Form, Formik } from 'formik'
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/auth/operations';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const IsLoggedIn = useSelector(selectIsLoggedIn)
 
     const initialValues = {
     email: '',
@@ -26,7 +28,7 @@ const LoginPage = () => {
         toast.error('invalid credentials');
       });
     options.resetForm();
-}
+  }
 
     return (
     <div className="hero bg-base-200 min-h-screen">
