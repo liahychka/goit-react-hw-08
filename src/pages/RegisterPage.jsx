@@ -6,7 +6,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const initialValues = {
-    username: '',
+    name: '',
     email: '',
     password: '',
   };
@@ -24,7 +24,7 @@ const RegisterPage = () => {
       <Form>
               <label>
                   <span>name</span>
-                  <Field type="text" name="username" />     
+                  <Field type="text" name="name" />     
         </label>
               <label>
                 <span>email</span>

@@ -9,9 +9,9 @@ export const generalApi = axios.create({
 //   generalApi.defaults.headers.common.Authorization = `Bearer ${token}`;
 // };
 
-export const register = createAsyncThunk('register', async (credentials, thunkApi) => {
+export const register = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
   try {
-      const { data } = await generalApi.post('/users/signup', credentials);
+      const { data } = await generalApi.post('users/signup', credentials);
       return data;
       
   } catch (error) {
@@ -19,3 +19,13 @@ export const register = createAsyncThunk('register', async (credentials, thunkAp
   }  
 });
 
+
+export const login = createAsyncThunk('login', async (credentials, thunkApi) => {
+  try {
+      const { data } = await generalApi.post('users/login', credentials);
+      return data;
+      
+  } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+  }  
+});
