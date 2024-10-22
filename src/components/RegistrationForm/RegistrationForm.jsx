@@ -2,6 +2,7 @@ import { Formik, Form, Field } from "formik"
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import toast from "react-hot-toast";
+import css from "./RegistrationForm.module.css"
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -32,15 +33,15 @@ const RegistrationForm = () => {
       <Form>
               <label>
                   <span>name</span>
-                  <Field type="text" name="name" />     
+                  <Field className={css.inputRegistarion} type="text" name="name" placeholder="name" />     
         </label>
               <label>
                 <span>email</span>
-               <Field type="email" name="email"/>   
+               <Field className={css.inputRegistarion} type="email" name="email" placeholder="email"/>   
           </label>
                     <label>
                 <span>password</span>
-               <Field type="current-password" name="password"  />   
+                <Field className={css.inputRegistarion} type="current-password" name="password" placeholder="password" />   
           </label>
           
 			<button type="submit">Register</button>

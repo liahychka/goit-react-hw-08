@@ -1,0 +1,32 @@
+.divForUsermenu {
+    display: flex;
+        justify-content: space-between;
+            align-items: baseline;
+    background-color: rgb(81, 101, 68);
+        min-width: 500px;
+        min-height: 50px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.divNav {
+    display: flex;
+    gap: 15px;
+}
+
+.navTitle {
+    color: azure;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        margin-left: 15px;
+}
+
+.btnLogout {
+    margin-right: 15px;
+    margin-bottom: 10px;
+}

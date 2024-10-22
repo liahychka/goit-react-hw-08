@@ -3,6 +3,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { login } from '../../redux/auth/operations';
+import css from "./LoginForm.module.css"
+
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -33,15 +35,15 @@ const LoginForm = () => {
         <Form>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+  <span className="label-text">email</span>
+    <Field className={css.inputLogin} name='email' type="email" placeholder="email"  required />          
           </label>
-          <Field name='email' type="email" placeholder="email" className="input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Password</span>
+         <span className="label-text">password</span>
+          <Field className={css.inputLogin} name='password' type="current-password" placeholder="password" required />                     
           </label>
-          <Field name='password' type="current-password" placeholder="password" className="input-bordered" required />
         </div>
         <div className="form-control mt-6">
           <button type='submit' className="btn btn-primary">Log In</button>
