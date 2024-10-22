@@ -5,7 +5,7 @@ export const generalApi = axios.create({
     baseURL: 'https://connections-api.goit.global',
 });
 
-const setAuthHeaders = (token) => {
+export const setAuthHeaders = (token) => {
   generalApi.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -21,7 +21,7 @@ export const register = createAsyncThunk('auth/register', async (credentials, th
 });
 
 
-export const login = createAsyncThunk('login', async (credentials, thunkApi) => {
+export const login = createAsyncThunk('auth/login', async (credentials, thunkApi) => {
   try {
       const { data } = await generalApi.post('users/login', credentials);
       setAuthHeaders(data.token);
@@ -32,9 +32,25 @@ export const login = createAsyncThunk('login', async (credentials, thunkApi) => 
   }  
 });
 
-export const logout = createAsyncThunk('logout', async (_, thunkApi) => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
       await generalApi.post('users/logout');      
+  } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+  }  
+});
+
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
+  const savedToken = thunkApi.getState().auth.token;
+
+  if (!savedToken) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+
+  setAuthHeaders(savedToken)
+  try {
+    const { data } = await generalApi.get('users/current');
+    return data;
   } catch (error) {
       return thunkApi.rejectWithValue(error.message);
   }  
