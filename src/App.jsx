@@ -20,18 +20,20 @@ const isRefreshing = useSelector(selectisRefreshing);
   useEffect(() => {
     dispatch(refresh())
   }, [dispatch]);
-  
 
-  return isRefreshing ? null : (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+        <Layout>
     <Routes>
-      <Route path="/" element={<Layout />} >
         <Route index element={<HomePage />} />
         <Route path="register" element={<RestrictedRoute component={<RegisterPage />} redirectTo='/contacts' />} />
         <Route path="login" element={<RestrictedRoute component={<LoginPage />} redirectTo='/contacts' />} />
         <Route path="contacts" element={<PrivateRoute component={<ContactsPage />} redirectTo='/login' />} />
-      </Route>
       <Route path="*" element={<NotFound />} />
-    </Routes>
+      </Routes>
+        </Layout>
+
   )
 }
 
